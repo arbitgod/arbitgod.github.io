@@ -1,106 +1,102 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>pwnable 笔记 Toddler&#39;s Bottle - bof | Nope</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="该题是一道考察缓冲区溢出的题  比较简单">
-<meta property="og:type" content="article">
-<meta property="og:title" content="pwnable 笔记 Toddler's Bottle - bof">
-<meta property="og:url" content="http://yoursite.com/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/index.html">
-<meta property="og:site_name" content="Nope">
-<meta property="og:description" content="该题是一道考察缓冲区溢出的题  比较简单">
-<meta property="og:image" content="https://img-blog.csdn.net/20180621153135922">
-<meta property="og:image" content="https://img-blog.csdn.net/20180621153813119">
-<meta property="og:image" content="https://img-blog.csdn.net/20180623192132781">
-<meta property="og:image" content="https://img-blog.csdn.net/20180623192508322">
-<meta property="og:image" content="https://img-blog.csdn.net/20180623192824229">
-<meta property="og:updated_time" content="2018-06-23T11:32:55.067Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pwnable 笔记 Toddler's Bottle - bof">
-<meta name="twitter:description" content="该题是一道考察缓冲区溢出的题  比较简单">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180621153135922">
-  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Nope">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+  	<link rel="stylesheet" href="/css/style.css">
+  	<link rel="stylesheet" href="/css/github-gist.css">
+    <!--SEO-->
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>pwnable 笔记 Toddler&#39;s Bottle - bof | Nope</title>
+
+
     <link rel="alternate" href="/atom.xml" title="Nope" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
 
-  <link rel="stylesheet" href="/css/style.css">
-  
 
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1d283676d7e81d10054b06f70a90decf";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
 </head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="header-inner" class="inner">
-    <div class="header-title"> 
-      <!-- <img src="/img/logo.png" alt="logo"> -->
-      <a href="/" id="logo">Nope</a>
-    </div>
-    <nav class="main-nav">
-      
-        <a class="main-nav-link" href="/">Home</a>
-      
-        <a class="main-nav-link" href="/archives">Blog</a>
-      
-        <a class="main-nav-link" href="/project">Project</a>
-      
-        <a class="main-nav-link" href="/about">About</a>
-      
-    </nav>
-    
-    <button class="navbar-toggle">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    
-    <ul class="navbar-nav">
-      
-        <li><a class="main-nav-link" href="/">Home</a></li>
-      
-        <li><a class="main-nav-link" href="/archives">Blog</a></li>
-      
-        <li><a class="main-nav-link" href="/project">Project</a></li>
-      
-        <li><a class="main-nav-link" href="/about">About</a></li>
-      
-    </ul>
-
-  </div>
-</header>
-      <div class="outer">
-
-
-        
-
-          <section id="main"><article id="post-pwnable 笔记 Toddler&#39;s Bottle - bof" class="article article-type-post" itemscope itemprop="blogPost">
-<!--   <div class="article-meta">
-    <small class="article-date">2018-06-21 by arbitgod</small>
-    
-  </div> -->
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      pwnable 笔记 Toddler&#39;s Bottle - bof
-    </h1>
-  
-
-        <small class="article-date">2018-06-21 by arbitgod</small>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>该题是一道考察缓冲区溢出的题  比较简单<br><a id="more"></a><!--more--><!--more--><br><!--more--></p>
+  <body>
+    <div class="container">
+	<header class="header">
+	  <div class="blog-title">
+	    <a href="/"> <img src="/img/logo.png"></a>
+	  </div>
+	  <nav>
+	    <ul class="menu">
+	      
+	        <li class="menu-item">
+	          <a href="/" class="menu-item-link nav-underline">首页</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/archives" class="menu-item-link nav-underline">归档</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/links" class="menu-item-link nav-underline">友链</a>
+	        </li>&sdot;
+	      
+	      	<li class="menu-item">
+	          <a href="/about" class="menu-item-link nav-underline">关于</a>
+	        </li>
+	    </ul>
+	  </nav>
+	</header>
+</div>
+<hr />
+    <div class="container">	
+	<div class="archive-main">
+	    <div class="archive-title">
+	    	<h2>pwnable 笔记 Toddler&#39;s Bottle - bof</h2>	    	
+	    </div>
+	    <div class="archive-meta">
+	   	    2018-06-21&nbsp;&nbsp;&sdot;&nbsp;&nbsp; 
+	   	    
+            	<a class="tag" href="/tags/#pwnable"title="pwnable">pwnable</a>&nbsp;&nbsp;
+            
+            	<a class="tag" href="/tags/#pwn"title="pwn">pwn</a>&nbsp;&nbsp;
+            
+	    </div>
+		<hr class="one"/>
+		<div class="archive-content typo">
+			<p>该题是一道考察缓冲区溢出的题  比较简单<br><a id="more"></a><!--more--><!--more--><br><!--more--></p>
 <p><img src="https://img-blog.csdn.net/20180621153135922" alt="这里写图片描述"></p>
 <h2 id="先看一下源码"><a href="#先看一下源码" class="headerlink" title="先看一下源码"></a>先看一下源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">void func(int key)&#123;</div><div class="line">	char overflowme[32];</div><div class="line">	printf(&quot;overflow me : &quot;);</div><div class="line">	gets(overflowme);	// smash me!</div><div class="line">	if(key == 0xcafebabe)&#123;</div><div class="line">		system(&quot;/bin/sh&quot;);</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		printf(&quot;Nah..\n&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">int main(int argc, char* argv[])&#123;</div><div class="line">	func(0xdeadbeef);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以看出</p>
@@ -135,171 +131,59 @@
 <p>而key的位置是 0xdeadbeef</p>
 <p>0xffffcf10 - 0xffffcedc = 52</p>
 <p>其他如上</p>
+ 
+		</div>
+		
+		    <div id="comments">
+		        
+	<!--PC和WAP自适应版-->
+<link rel="stylesheet" type="text/css" href="/css/changyan.css"/>
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+	(function(){var appid='cytsbYV5p';var conf='prod_5db6bea920c9a0d149cedeab44860234';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+	c.appendChild(b)};loadJs("http://qn.apkfuns.com/changyan/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
+</script>	
 
-      
+		    </div>
+		
+	</div>
+</div>
+<div id="toc">
+    <div class="archive-toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先看一下源码"><span class="toc-text">先看一下源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-直接拖进IDA-F5反编译func函数"><span class="toc-text">0x01  直接拖进IDA F5反编译func函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-用gdb分析"><span class="toc-text">0x02 用gdb分析</span></a></li></ol>
     </div>
-    <footer class="article-footer">
-      <!-- <a data-url="http://yoursite.com/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/" data-id="cjise9xns0001h8tzvgbndsp4" class="article-share-link">Partager</a> -->
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/">pwn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwnable/">pwnable</a></li></ul>
+</div>
 
-    </footer>
-  </div>
-<!--   
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2018/05/27/2018信息安全铁人三项赛/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">2018.5.18 信息安全铁三赛</div>
-    </a>
-  
-</nav>
-
-   -->
-</article>
-</section>
-
+		<hr />
+<div class="footer">
+	
         
-
+            <a href="//github.com/praming" rel="external nofollow" title="Github" target="_blank">
+		    	<i class="iconfont">&#xeee2;</i>
+		    </a>&nbsp;&nbsp;
         
-          <aside id="sidebar">
-  <!-- 
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwn/">pwn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwnable/">pwnable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/比赛/">比赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/流量分析/">流量分析</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/pwn/" style="font-size: 10px;">pwn</a> <a href="/tags/pwnable/" style="font-size: 10px;">pwnable</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/流量分析/" style="font-size: 10px;">流量分析</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
-    <div class="widget">
-      <ul>
+            <a href="mailto:i@praming.cn" rel="external nofollow" title="邮箱" target="_blank">
+		    	<i class="iconfont">&#xe69f;</i>
+		    </a>&nbsp;&nbsp;
         
-          <li>
-            <a href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/">pwnable 笔记 Toddler&#39;s Bottle - bof</a>
-          </li>
+            <a href="34721974" rel="external nofollow" title="微信" target="_blank">
+		    	<i class="iconfont">&#xe7e5;</i>
+		    </a>&nbsp;&nbsp;
         
-          <li>
-            <a href="/2018/05/27/2018信息安全铁人三项赛/">2018.5.18 信息安全铁三赛</a>
-          </li>
+            <a href="//weibo.com/praming" rel="external nofollow" title="微博" target="_blank">
+		    	<i class="iconfont">&#xe629;</i>
+		    </a>&nbsp;&nbsp;
         
-      </ul>
-    </div>
-  </div>
-
-   -->
-  
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-
-  
-  <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/pwn/" style="font-size: 10px;">pwn</a> <a href="/tags/pwnable/" style="font-size: 10px;">pwnable</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/流量分析/" style="font-size: 10px;">流量分析</a>
-    </div>
-  </div>
-
-  
-  <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
-    <div class="widget">
-      <ul>
+            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+		    	<i class="iconfont">&#xe6ee;</i>
+		    </a>&nbsp;&nbsp;
         
-          <li>
-            <a href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/">pwnable 笔记 Toddler&#39;s Bottle - bof</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/27/2018信息安全铁人三项赛/">2018.5.18 信息安全铁三赛</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a> | Designed by <a href="http://www.javion.me">Javion</a><br>
-      <span>Copyright</span>  &copy; 2018 <a href="http://www.Javion.me">Javion.me</a>. 2016 • All rights reserved.
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Blog</a>
-  
-    <a href="/project" class="mobile-nav-link">Project</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav>
-    
-
-<script src="/js/jquery-1.12.2.min.js"></script>
-<script src="/js/masonry-docs.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-<script>
-  $(function() {
-    var $container = $('#masonry');
-        $container.imagesLoaded(function() {
-        $container.masonry({
-          itemSelector: '.box', 
-        });
-     });
-  });
-</script>
-  </div>
-</body>
+	
+</div>
+<script src="/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="copyright">
+	Copyright &copy; 2018 . 豫ICP备10206454号-2<br />Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Theme is <a href="https://github.com/praming/hexo-theme-Ice" target="_blank">Ice</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+</div>
+  </body>
 </html>
