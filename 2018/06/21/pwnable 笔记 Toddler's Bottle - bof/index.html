@@ -1,20 +1,10 @@
 <!DOCTYPE html>
-
-
-  <html class="light page-post">
-
-
+<html>
 <head>
   <meta charset="utf-8">
   
   <title>pwnable 笔记 Toddler&#39;s Bottle - bof | Nope</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  
-    <meta name="keywords" content="pwnable,pwn," />
-  
-
   <meta name="description" content="该题是一道考察缓冲区溢出的题  比较简单">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pwnable 笔记 Toddler's Bottle - bof">
@@ -31,211 +21,86 @@
 <meta name="twitter:title" content="pwnable 笔记 Toddler's Bottle - bof">
 <meta name="twitter:description" content="该题是一道考察缓冲区溢出的题  比较简单">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20180621153135922">
-
+  
+    <link rel="alternate" href="/atom.xml" title="Nope" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
   
 
-  
-    <link rel="icon" href="/favicon.ico">
-  
-
-  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
-
-
-  
-    <link rel="stylesheet" href="/css/personal-style.css">
+  <link rel="stylesheet" href="/css/style.css">
   
 
-  
-
-  
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-  
-  <script type="text/javascript">
-	(function(){
-	    var bp = document.createElement('script');
-	    var curProtocol = window.location.protocol.split(':')[0];
-	    if (curProtocol === 'https') {
-	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-	    }
-	    else {
-	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-	    }
-	    var s = document.getElementsByTagName("script")[0];
-	    s.parentNode.insertBefore(bp, s);
-	})();
-  </script>
-
-
-
-  
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  
-
-  
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
 </head>
 
 <body>
-
-
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
-  
-
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">盒子</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
-    </a>
-    <ul class="list-toolbox">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-inner" class="inner">
+    <div class="header-title"> 
+      <!-- <img src="/img/logo.png" alt="logo"> -->
+      <a href="/" id="logo">Nope</a>
+    </div>
+    <nav class="main-nav">
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            博客
-          </a>
-        </li>
+        <a class="main-nav-link" href="/">Home</a>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/category/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            分类
-          </a>
-        </li>
+        <a class="main-nav-link" href="/archives">Blog</a>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            标签
-          </a>
-        </li>
+        <a class="main-nav-link" href="/project">Project</a>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            友链
-          </a>
-        </li>
+        <a class="main-nav-link" href="/about">About</a>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
+    </nav>
+    
+    <button class="navbar-toggle">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    
+    <ul class="navbar-nav">
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
-            RSS
-          </a>
-        </li>
+        <li><a class="main-nav-link" href="/">Home</a></li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            搜索
-          </a>
-        </li>
+        <li><a class="main-nav-link" href="/archives">Blog</a></li>
+      
+        <li><a class="main-nav-link" href="/project">Project</a></li>
+      
+        <li><a class="main-nav-link" href="/about">About</a></li>
       
     </ul>
+
   </div>
+</header>
+      <div class="outer">
 
 
-</div>
+        
 
-
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts List</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先看一下源码"><span class="toc-text">先看一下源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-直接拖进IDA-F5反编译func函数"><span class="toc-text">0x01  直接拖进IDA F5反编译func函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-用gdb分析"><span class="toc-text">0x02 用gdb分析</span></a></li></ol>
-  </div>
-
-
-
-<div class="content content-post CENTER">
-   <article id="post-pwnable 笔记 Toddler&#39;s Bottle - bof" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">pwnable 笔记 Toddler&#39;s Bottle - bof</h1>
-
-    <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2018.06.21</span>
-      </span>
-
-      
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>arbitgod</span>
-        </span>
-      
-
-      
-
-
-      
-        <span>
-          <i class="icon-comment"></i>
-          <a href="http://www.forsigner.com/2018/06/21/pwnable 笔记 Toddler&#39;s Bottle - bof/#disqus_thread"></a>
-        </span>
-      
-
-      
-      <i class="fa fa-eye"></i> 
-        <span id="busuanzi_container_page_pv">
-           &nbsp热度 <span id="busuanzi_value_page_pv">
-           <i class="fa fa-spinner fa-spin"></i></span>℃
-        </span>
-      
-      
-    </div>
-  </header>
-
-  <div class="article-content">
+          <section id="main"><article id="post-pwnable 笔记 Toddler&#39;s Bottle - bof" class="article article-type-post" itemscope itemprop="blogPost">
+<!--   <div class="article-meta">
+    <small class="article-date">2018-06-21 by arbitgod</small>
     
-      <p>该题是一道考察缓冲区溢出的题  比较简单<br><a id="more"></a><!--more--><!--more--><br><!--more--></p>
+  </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pwnable 笔记 Toddler&#39;s Bottle - bof
+    </h1>
+  
+
+        <small class="article-date">2018-06-21 by arbitgod</small>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>该题是一道考察缓冲区溢出的题  比较简单<br><a id="more"></a><!--more--><!--more--><br><!--more--></p>
 <p><img src="https://img-blog.csdn.net/20180621153135922" alt="这里写图片描述"></p>
 <h2 id="先看一下源码"><a href="#先看一下源码" class="headerlink" title="先看一下源码"></a>先看一下源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">void func(int key)&#123;</div><div class="line">	char overflowme[32];</div><div class="line">	printf(&quot;overflow me : &quot;);</div><div class="line">	gets(overflowme);	// smash me!</div><div class="line">	if(key == 0xcafebabe)&#123;</div><div class="line">		system(&quot;/bin/sh&quot;);</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		printf(&quot;Nah..\n&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">int main(int argc, char* argv[])&#123;</div><div class="line">	func(0xdeadbeef);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以看出</p>
@@ -271,229 +136,170 @@
 <p>0xffffcf10 - 0xffffcedc = 52</p>
 <p>其他如上</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://yoursite.com/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/" data-id="cjisezyrt0005v4tzwynib4rj" class="article-share-link">Share</a> -->
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/">pwn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwnable/">pwnable</a></li></ul>
+
+    </footer>
+  </div>
+<!--   
     
-  </div>
-
+<nav id="article-nav">
   
-      <div class="git"></div>
   
+    <a href="/2018/05/27/2018信息安全铁人三项赛/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2018.5.18 信息安全铁三赛</div>
+    </a>
+  
+</nav>
 
+   -->
 </article>
+</section>
 
+        
 
-   
-  <div class="text-center donation">
-    <div class="inner-donation">
-      <span class="btn-donation">支持一下</span>
-      <div class="donation-body">
-        <div class="tip text-center">扫一扫，支持forsigner</div>
-        <ul>
         
-          <li class="item">
-            <span>微信扫一扫</span>
-            <img src="/images/qr-wechat.png" alt="">
-          </li>
-        
-          <li class="item">
-            <span>支付宝扫一扫</span>
-            <img src="/images/qr-alipay.png" alt="">
-          </li>
-        
-        </ul>
-      </div>
+          <aside id="sidebar">
+  <!-- 
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwn/">pwn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwnable/">pwnable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/比赛/">比赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/流量分析/">流量分析</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
 
-   
-  <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2018/05/27/2018信息安全铁人三项赛/">
-        <i class="icon icon-angle-left"></i>
-    </a>
-    <a class="hide pull-right" href="/">
-        <i class="icon icon-angle-right"></i>
-    </a>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/pwn/" style="font-size: 10px;">pwn</a> <a href="/tags/pwnable/" style="font-size: 10px;">pwnable</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/流量分析/" style="font-size: 10px;">流量分析</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
   </div>
 
 
-
-
-</div>
-
-
-  <a id="backTop" class="back-top">
-    <i class="icon-angle-up"></i>
-  </a>
-
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">Close</span>
-    </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
         
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              博客
-            </a>
+          <li>
+            <a href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/">pwnable 笔记 Toddler&#39;s Bottle - bof</a>
           </li>
         
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/category/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              分类
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              标签
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              友链
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              关于
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
-              RSS
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              搜索
-            </a>
+          <li>
+            <a href="/2018/05/27/2018信息安全铁人三项赛/">2018.5.18 信息安全铁三赛</a>
           </li>
         
       </ul>
-
     </div>
   </div>
-</div>
 
+   -->
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
 
 
   
-      <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/pwn/" style="font-size: 10px;">pwn</a> <a href="/tags/pwnable/" style="font-size: 10px;">pwnable</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/流量分析/" style="font-size: 10px;">流量分析</a>
     </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'forsigner';
-    
-    var disqus_url = 'http://yoursite.com/2018/06/21/pwnable 笔记 Toddler&#39;s Bottle - bof/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
-
-
-
-    
-    
-
-    
-    
-
-    
-
-    
-    
-
   </div>
 
   
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/">pwnable 笔记 Toddler&#39;s Bottle - bof</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/27/2018信息安全铁人三项赛/">2018.5.18 信息安全铁三赛</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
-  <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> | Designed by <a href="http://www.javion.me">Javion</a><br>
+      <span>Copyright</span>  &copy; 2018 <a href="http://www.Javion.me">Javion.me</a>. 2016 • All rights reserved.
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Blog</a>
+  
+    <a href="/project" class="mobile-nav-link">Project</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
 
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
-    }
+<script src="/js/jquery-1.12.2.min.js"></script>
+<script src="/js/masonry-docs.min.js"></script>
 
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
 
-  window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
-      // load success
-    });
-  }
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script>
+  $(function() {
+    var $container = $('#masonry');
+        $container.imagesLoaded(function() {
+        $container.masonry({
+          itemSelector: '.box', 
+        });
+     });
+  });
 </script>
-
+  </div>
 </body>
 </html>
