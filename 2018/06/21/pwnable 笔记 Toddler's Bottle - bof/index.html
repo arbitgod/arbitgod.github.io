@@ -1,102 +1,241 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="Nope">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no,adress=no">
-    <meta name="browsermode" content="application">
-    <meta name="screen-orientation" content="portrait">
-    <link rel="dns-prefetch" href="http://yoursite.com">
-  	<link rel="stylesheet" href="/css/style.css">
-  	<link rel="stylesheet" href="/css/github-gist.css">
-    <!--SEO-->
 
 
-
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
-    <!--Title-->
+  <html class="light page-post">
 
 
-<title>pwnable 笔记 Toddler&#39;s Bottle - bof | Nope</title>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pwnable 笔记 Toddler&#39;s Bottle - bof | Nope</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="alternate" href="/atom.xml" title="Nope" type="application/atom+xml">
+  
+    <meta name="keywords" content="pwnable,pwn," />
+  
 
+  <meta name="description" content="该题是一道考察缓冲区溢出的题  比较简单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pwnable 笔记 Toddler's Bottle - bof">
+<meta property="og:url" content="http://yoursite.com/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/index.html">
+<meta property="og:site_name" content="Nope">
+<meta property="og:description" content="该题是一道考察缓冲区溢出的题  比较简单">
+<meta property="og:image" content="https://img-blog.csdn.net/20180621153135922">
+<meta property="og:image" content="https://img-blog.csdn.net/20180621153813119">
+<meta property="og:image" content="https://img-blog.csdn.net/20180623192132781">
+<meta property="og:image" content="https://img-blog.csdn.net/20180623192508322">
+<meta property="og:image" content="https://img-blog.csdn.net/20180623192824229">
+<meta property="og:updated_time" content="2018-06-23T11:32:55.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pwnable 笔记 Toddler's Bottle - bof">
+<meta name="twitter:description" content="该题是一道考察缓冲区溢出的题  比较简单">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180621153135922">
 
+  
+
+  
     <link rel="icon" href="/favicon.ico">
+  
 
-    
-
-
-
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?1d283676d7e81d10054b06f70a90decf";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
 
 
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
 
-    
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
 </head>
-  <body>
-    <div class="container">
-	<header class="header">
-	  <div class="blog-title">
-	    <a href="/"> <img src="/img/logo.png"></a>
-	  </div>
-	  <nav>
-	    <ul class="menu">
-	      
-	        <li class="menu-item">
-	          <a href="/" class="menu-item-link nav-underline">首页</a>
-	        </li>&sdot;
-	      
-	        <li class="menu-item">
-	          <a href="/archives" class="menu-item-link nav-underline">归档</a>
-	        </li>&sdot;
-	      
-	        <li class="menu-item">
-	          <a href="/links" class="menu-item-link nav-underline">友链</a>
-	        </li>&sdot;
-	      
-	      	<li class="menu-item">
-	          <a href="/about" class="menu-item-link nav-underline">关于</a>
-	        </li>
-	    </ul>
-	  </nav>
-	</header>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
 </div>
-<hr />
-    <div class="container">	
-	<div class="archive-main">
-	    <div class="archive-title">
-	    	<h2>pwnable 笔记 Toddler&#39;s Bottle - bof</h2>	    	
-	    </div>
-	    <div class="archive-meta">
-	   	    2018-06-21&nbsp;&nbsp;&sdot;&nbsp;&nbsp; 
-	   	    
-            	<a class="tag" href="/tags/#pwnable"title="pwnable">pwnable</a>&nbsp;&nbsp;
-            
-            	<a class="tag" href="/tags/#pwn"title="pwn">pwn</a>&nbsp;&nbsp;
-            
-	    </div>
-		<hr class="one"/>
-		<div class="archive-content typo">
-			<p>该题是一道考察缓冲区溢出的题  比较简单<br><a id="more"></a><!--more--><!--more--><br><!--more--></p>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先看一下源码"><span class="toc-text">先看一下源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-直接拖进IDA-F5反编译func函数"><span class="toc-text">0x01  直接拖进IDA F5反编译func函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-用gdb分析"><span class="toc-text">0x02 用gdb分析</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-pwnable 笔记 Toddler&#39;s Bottle - bof" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">pwnable 笔记 Toddler&#39;s Bottle - bof</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.06.21</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>arbitgod</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2018/06/21/pwnable 笔记 Toddler&#39;s Bottle - bof/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>该题是一道考察缓冲区溢出的题  比较简单<br><a id="more"></a><!--more--><!--more--><br><!--more--></p>
 <p><img src="https://img-blog.csdn.net/20180621153135922" alt="这里写图片描述"></p>
 <h2 id="先看一下源码"><a href="#先看一下源码" class="headerlink" title="先看一下源码"></a>先看一下源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">void func(int key)&#123;</div><div class="line">	char overflowme[32];</div><div class="line">	printf(&quot;overflow me : &quot;);</div><div class="line">	gets(overflowme);	// smash me!</div><div class="line">	if(key == 0xcafebabe)&#123;</div><div class="line">		system(&quot;/bin/sh&quot;);</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		printf(&quot;Nah..\n&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">int main(int argc, char* argv[])&#123;</div><div class="line">	func(0xdeadbeef);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以看出</p>
@@ -131,59 +270,230 @@
 <p>而key的位置是 0xdeadbeef</p>
 <p>0xffffcf10 - 0xffffcedc = 52</p>
 <p>其他如上</p>
- 
-		</div>
-		
-		    <div id="comments">
-		        
-	<!--PC和WAP自适应版-->
-<link rel="stylesheet" type="text/css" href="/css/changyan.css"/>
-<div id="SOHUCS"></div>
-<script type="text/javascript">
-	(function(){var appid='cytsbYV5p';var conf='prod_5db6bea920c9a0d149cedeab44860234';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
-	c.appendChild(b)};loadJs("http://qn.apkfuns.com/changyan/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
-</script>	
 
-		    </div>
-		
-	</div>
-</div>
-<div id="toc">
-    <div class="archive-toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先看一下源码"><span class="toc-text">先看一下源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-直接拖进IDA-F5反编译func函数"><span class="toc-text">0x01  直接拖进IDA F5反编译func函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-用gdb分析"><span class="toc-text">0x02 用gdb分析</span></a></li></ol>
+    
+  </div>
+
+  
+      <div class="git"></div>
+  
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul>
+        
+          <li class="item">
+            <span>微信扫一扫</span>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <span>支付宝扫一扫</span>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
     </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/05/27/2018信息安全铁人三项赛/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
 </div>
 
-		<hr />
-<div class="footer">
-	
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
         
-            <a href="//github.com/praming" rel="external nofollow" title="Github" target="_blank">
-		    	<i class="iconfont">&#xeee2;</i>
-		    </a>&nbsp;&nbsp;
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
         
-            <a href="mailto:i@praming.cn" rel="external nofollow" title="邮箱" target="_blank">
-		    	<i class="iconfont">&#xe69f;</i>
-		    </a>&nbsp;&nbsp;
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
         
-            <a href="34721974" rel="external nofollow" title="微信" target="_blank">
-		    	<i class="iconfont">&#xe7e5;</i>
-		    </a>&nbsp;&nbsp;
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
         
-            <a href="//weibo.com/praming" rel="external nofollow" title="微博" target="_blank">
-		    	<i class="iconfont">&#xe629;</i>
-		    </a>&nbsp;&nbsp;
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
         
-            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
-		    	<i class="iconfont">&#xe6ee;</i>
-		    </a>&nbsp;&nbsp;
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
         
-	
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
 </div>
-<script src="/js/highlight.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-		<div class="copyright">
-	Copyright &copy; 2018 . 豫ICP备10206454号-2<br />Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Theme is <a href="https://github.com/praming/hexo-theme-Ice" target="_blank">Ice</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Hosted by <a href="https://pages.coding.me">Coding Pages</a>
-</div>
-  </body>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2018/06/21/pwnable 笔记 Toddler&#39;s Bottle - bof/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
 </html>
