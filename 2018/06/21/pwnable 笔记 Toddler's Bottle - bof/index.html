@@ -12,11 +12,11 @@
 <meta property="og:site_name" content="Nope">
 <meta property="og:description" content="该题是一道考察缓冲区溢出的题  比较简单">
 <meta property="og:image" content="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRW1rVFZKb0tPdTVKMkJqUVZPODBkZGMrZGQ3T05wRDFRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0">
-<meta property="og:image" content="https://img-blog.csdn.net/20180621153813119">
-<meta property="og:image" content="https://img-blog.csdn.net/20180623192132781">
-<meta property="og:image" content="https://img-blog.csdn.net/20180623192508322">
-<meta property="og:image" content="https://img-blog.csdn.net/20180623192824229">
-<meta property="og:updated_time" content="2018-06-25T01:32:34.833Z">
+<meta property="og:image" content="http://imglf5.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRkpGbDE5UGtYNmVNdnVVaW00Z2FSZ0tyVGVPUDFxamVnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0">
+<meta property="og:image" content="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnS0VoTWhOTE00TitzelB6dTFHbkdqOCtDaC9RMkowQ1pBPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0">
+<meta property="og:image" content="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnQ0cxdnNyOEI5OEZsL2cvM2VUVUtUNUpZM3dESzVQeWVnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0">
+<meta property="og:image" content="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTFNEa2pLaU5GTk0xK1VIejFKWFJRSS93TkZtc3NET1Z3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0">
+<meta property="og:updated_time" content="2018-06-25T01:34:18.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pwnable 笔记 Toddler's Bottle - bof">
 <meta name="twitter:description" content="该题是一道考察缓冲区溢出的题  比较简单">
@@ -278,7 +278,7 @@
 <p>可以看出</p>
 <p>func()中有一个长度为32的字符串数组overflow<br>在调用gets()时由于没有检查字符串长度，导致缓冲区溢出，超过32字节的数据将覆盖内存中的其他数据。<br>随后比较key和0xcafebabe</p>
 <p>main中调用func时参数key指定为0xdeadbeef，在进入func后会落入else分支。</p>
-<h2 id="0x01-直接拖进IDA-F5反编译func函数"><a href="#0x01-直接拖进IDA-F5反编译func函数" class="headerlink" title="0x01  直接拖进IDA F5反编译func函数"></a>0x01  直接拖进IDA F5反编译func函数</h2><p><img src="https://img-blog.csdn.net/20180621153813119" alt="这里写图片描述"></p>
+<h2 id="0x01-直接拖进IDA-F5反编译func函数"><a href="#0x01-直接拖进IDA-F5反编译func函数" class="headerlink" title="0x01  直接拖进IDA F5反编译func函数"></a>0x01  直接拖进IDA F5反编译func函数</h2><p><img src="http://imglf5.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRkpGbDE5UGtYNmVNdnVVaW00Z2FSZ0tyVGVPUDFxamVnPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0" alt="这里写图片描述"></p>
 <p>可以看到key的位置在<code>ebp+8h</code>处</p>
 <p>而局部变量overflowme 对应s 首地址在ebp-2ch处。</p>
 <p>因此，二者的距离为0x34.</p>
@@ -295,13 +295,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb-peda$ b main</div></pre></td></tr></table></figure>
 <p>然后运行程序</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb-peda$ r</div></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdn.net/20180623192132781" alt="这里写图片描述"></p>
+<p><img src="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnS0VoTWhOTE00TitzelB6dTFHbkdqOCtDaC9RMkowQ1pBPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0" alt="这里写图片描述"></p>
 <p>现在程序停在了刚才下的断点处</p>
 <p>单步调试(ni)至<code>call &lt;funC&gt;</code>后进入函数（si），一直跟到<code>call &lt;get&gt;</code></p>
-<p><img src="https://img-blog.csdn.net/20180623192508322" alt="这里写图片描述"></p>
+<p><img src="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnQ0cxdnNyOEI5OEZsL2cvM2VUVUtUNUpZM3dESzVQeWVnPT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0" alt="这里写图片描述"></p>
 <p>查看一下栈中的情况</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb-peda$ x /40xw $esp</div></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdn.net/20180623192824229" alt="这里写图片描述"></p>
+<p><img src="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTFNEa2pLaU5GTk0xK1VIejFKWFJRSS93TkZtc3NET1Z3PT0.png?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0" alt="这里写图片描述"></p>
 <p>esp中存储的是overflow开始的位置</p>
 <p>overflow 开始的位置是0xffffcedc</p>
 <p>而key的位置是 0xdeadbeef</p>
@@ -365,7 +365,7 @@
         <p><span>本文标题:</span><a href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/">pwnable 笔记 Toddler&#39;s Bottle - bof</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 arbitgod 的个人博客">arbitgod</a></p>
         <p><span>发布时间:</span>2018年06月21日 - 16时24分</p>
-        <p><span>最后更新:</span>2018年06月25日 - 09时32分</p>
+        <p><span>最后更新:</span>2018年06月25日 - 09时34分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/" title="pwnable 笔记 Toddler&#39;s Bottle - bof">http://yoursite.com/2018/06/21/pwnable 笔记 Toddler&#39;s Bottle - bof/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/21/pwnable 笔记 Toddler&#39;s Bottle - bof/　　作者: arbitgod" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
