@@ -14,7 +14,7 @@
 <meta property="og:image" content="http://imglf4.nosdn0.126.net/img/S0ZyYTZNbTNwamVlMDNYcTRDM0xCU0hBVXdXQ1M2RkozYUxtQnVOY2QrTG42eFAxM0VteGlnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
 <meta property="og:image" content="http://imglf5.nosdn0.126.net/img/S0ZyYTZNbTNwamVlMDNYcTRDM0xCZVNEOGJJTnFzUElKMm1ibnFsOUNheVJLckJ5WjlFRTVBPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
 <meta property="og:image" content="http://imglf5.nosdn0.126.net/img/S0ZyYTZNbTNwamVlMDNYcTRDM0xCUy82cXpaaWwreDVra0ZwMno1K2txOUwwUXdDK2ZEZVBRPT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0">
-<meta property="og:updated_time" content="2018-07-02T10:31:35.579Z">
+<meta property="og:updated_time" content="2018-07-02T10:32:54.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pwnable 笔记 Toddler's Bottle - random">
 <meta name="twitter:description" content="pwnable.kr一道1point的题">
@@ -273,11 +273,11 @@
         <p>pwnable.kr一道1point的题</p>
 <a id="more"></a><!--more--><!--more-->
 <!--more-->
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include stdio.h</div><div class="line"> </div><div class="line">int main()&#123;</div><div class="line">	unsigned int random;</div><div class="line">	random = rand();	 random value!</div><div class="line">	printf(%u,random);</div><div class="line">	unsigned int key=0;</div><div class="line">	scanf(%d, &amp;key);</div><div class="line"> </div><div class="line">	if( (key ^ random) == 0xdeadbeef )&#123;</div><div class="line">		printf(Good!n);</div><div class="line">		system(bincat flag);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	printf(Wrong, maybe you should try 2^32 cases.n);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"> </div><div class="line">int main()&#123;</div><div class="line">	unsigned int random;</div><div class="line">	random = rand();	 random value!</div><div class="line">	printf(%u,random);</div><div class="line">	unsigned int key=0;</div><div class="line">	scanf(%d, &amp;key);</div><div class="line"> </div><div class="line">	if( (key ^ random) == 0xdeadbeef )&#123;</div><div class="line">		printf(Good!n);</div><div class="line">		system(bincat flag);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	printf(Wrong, maybe you should try 2^32 cases.n);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>分析下代码</p>
 <p>发现输入的key只要和random异或等于 0xdeadbeef</p>
 <p>那么就可以得到flag</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#includestdio.h</div><div class="line">#includestdlib.h</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	unsigned random</div><div class="line">	random = rand();</div><div class="line">	printf(%u,random);</div><div class="line">	return0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	unsigned random</div><div class="line">	random = rand();</div><div class="line">	printf(%u,random);</div><div class="line">	return0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 测试每次输出的都一样，rand函数返回的都是：1804289383</p>
 <p> and()函数用来产生随机数，但是，rand()的内部实现是用线性同余法实现的，是伪随机数，由于周期较长，因此在一定范围内可以看成是随机的。</p>
 <p> rand()会返回一个范围在0到RAND_MAX（32767）之间的伪随机数（整数）。</p>
@@ -346,7 +346,7 @@
         <p><span>本文标题:</span><a href="/2018/07/02/pwnable 笔记 Toddler's Bottle - random/">pwnable 笔记 Toddler&#39;s Bottle - random</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 arbitgod 的个人博客">arbitgod</a></p>
         <p><span>发布时间:</span>2018年07月02日 - 19时24分</p>
-        <p><span>最后更新:</span>2018年07月02日 - 18时31分</p>
+        <p><span>最后更新:</span>2018年07月02日 - 18时32分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/02/pwnable 笔记 Toddler's Bottle - random/" title="pwnable 笔记 Toddler&#39;s Bottle - random">http://yoursite.com/2018/07/02/pwnable 笔记 Toddler&#39;s Bottle - random/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/02/pwnable 笔记 Toddler&#39;s Bottle - random/　　作者: arbitgod" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
