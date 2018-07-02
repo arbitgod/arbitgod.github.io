@@ -3,30 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>2018.5.18 信息安全铁三赛 | Nope</title>
+  <title>pwnable 笔记 Toddler&#39;s Bottle - random | Nope</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="纪念下自己的第一次比赛">
+  <meta name="description" content="pwnable.kr一道1point的题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018.5.18 信息安全铁三赛">
-<meta property="og:url" content="http://yoursite.com/2018/05/27/2018信息安全铁人三项赛/index.html">
+<meta property="og:title" content="pwnable 笔记 Toddler's Bottle - random">
+<meta property="og:url" content="http://yoursite.com/2018/07/02/pwnable 笔记 Toddler's Bottle - random/index.html">
 <meta property="og:site_name" content="Nope">
-<meta property="og:description" content="纪念下自己的第一次比赛">
-<meta property="og:image" content="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnSTE1ZTVQTjhaR3RVV2ZMNWh3SmFQY0FpWHBGS1p5SmFBPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTjY2RXI3Q0NITFZUOFdtL0NhV3FEYWpTQlc5N1ZTVjFRPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTi9sc2diVkdjQTAvSFlKYXFCVVg5N2tVbXhmWFpJL09nPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnSmdzVWRCTXlMQkFmWWxyYkFNb0VORGhtVjArNXJYbjhRPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRnBrNlQ2YmdZajcxTXVISzduT1ZQMnM3NnhGdGxlckt3PT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnQTJtS2ZweFJ1SFhwVXNvbGlvQUZyQml5Wm1EaklWWlJRPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnSnFVTFZhQUpZL1M2azlnbUVCaWFoUmVHcXdQTVllZTF3PT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTE9LNE1JVC9hV2FsSU1FNExMelFWelJNNXpTWEtZSHF3PT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnUGgxVk5KOVhGWlYwaklpcVRZTE4va3VKeU90cENRa3lBPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRTlLMkcvMElVTDZ0V1BpbGQ2R1hxWkhMZjF4eVVCWEpnPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:image" content="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRURqS1RxNkRzV1ZnYXlYWWJSa01BUWJlVytqZmE0b1NBPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
-<meta property="og:updated_time" content="2018-06-25T01:44:45.584Z">
+<meta property="og:description" content="pwnable.kr一道1point的题">
+<meta property="og:image" content="http://yoursite.com/httpimglf4.nosdn0.126.netimgS0ZyYTZNbTNwamVlMDNYcTRDM0xCU0hBVXdXQ1M2RkozYUxtQnVOY2QrTG42eFAxM0VteGlnPT0.jpgimageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+<meta property="og:image" content="http://yoursite.com/httpimglf5.nosdn0.126.netimgS0ZyYTZNbTNwamVlMDNYcTRDM0xCZVNEOGJJTnFzUElKMm1ibnFsOUNheVJLckJ5WjlFRTVBPT0.pngimageView&thumbnail=500x0&quality=96&stripmeta=0">
+<meta property="og:image" content="http://yoursite.com/httpimglf5.nosdn0.126.netimgS0ZyYTZNbTNwamVlMDNYcTRDM0xCUy82cXpaaWwreDVra0ZwMno1K2txOUwwUXdDK2ZEZVBRPT0.pngimageView&thumbnail=500x0&quality=96&stripmeta=0">
+<meta property="og:updated_time" content="2018-07-02T10:25:44.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018.5.18 信息安全铁三赛">
-<meta name="twitter:description" content="纪念下自己的第一次比赛">
-<meta name="twitter:image" content="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnSTE1ZTVQTjhaR3RVV2ZMNWh3SmFQY0FpWHBGS1p5SmFBPT0.jpg?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg">
+<meta name="twitter:title" content="pwnable 笔记 Toddler's Bottle - random">
+<meta name="twitter:description" content="pwnable.kr一道1point的题">
+<meta name="twitter:image" content="http://yoursite.com/httpimglf4.nosdn0.126.netimgS0ZyYTZNbTNwamVlMDNYcTRDM0xCU0hBVXdXQ1M2RkozYUxtQnVOY2QrTG42eFAxM0VteGlnPT0.jpgimageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
   
     <link rel="alternative" href="/atom.xml" title="Nope" type="application/atom+xml">
   
@@ -240,11 +232,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-2018信息安全铁人三项赛" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-pwnable 笔记 Toddler&#39;s Bottle - random" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/05/27/2018信息安全铁人三项赛/" class="article-date">
-      <time datetime="2018-05-27T08:24:04.000Z" itemprop="datePublished">2018-05-27</time>
+      <a href="/2018/07/02/pwnable 笔记 Toddler's Bottle - random/" class="article-date">
+      <time datetime="2018-07-02T11:24:04.000Z" itemprop="datePublished">2018-07-02</time>
 </a>
     </div>
   
@@ -257,7 +249,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2018.5.18 信息安全铁三赛
+      pwnable 笔记 Toddler&#39;s Bottle - random
     </h1>
   
 
@@ -268,7 +260,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/比赛/">比赛</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/流量分析/">流量分析</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/">pwn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwnable/">pwnable</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -278,45 +270,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>纪念下自己的第一次比赛</p>
-<a id="more"></a>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>1.黑客的IP是多少<br>2.服务器1.99的web服务器使用的CMS及其版本号(请直接复制)<br>3.服务器拿到的webshell的网址(请输入url解码后的网址)<br>4.服务器1.99的主机名<br>5.网站根目录的绝对路径(注意最后加斜杠)<br>6.黑客上传的第一个文件名称是什么<br>7.黑客进行内网扫描，扫描的端口都有哪些(端口从小到大，用英文逗号分隔)<br>8.服务器2.88的ftp服务账号密码(格式：账号/密码)<br>9.黑客成功登陆ftp的时间(格式：10:15:36)<br>10.黑客在ftp中下载的敏感文件名称是什么<br>11.服务器2.88中用户名为admin_zz的web后台管理员的密码<br>12.服务器2.88的mysql账号密码(格式：账号/密码)<br>13.服务器2.88的mysql服务中有和admin有关的三个表，请按照黑客的查询顺序作答，使用空格分隔<br>14.请列出黑客设置的genreallog的绝对路径(将路径复制出来，区分大小写)<br>15.路由器的品牌、型号、版本(请直接复制粘贴)<br>16.列出路由器的所有IP地址(格式：从小到大，用英文逗号分隔)<br>17.在路由器的端口监控中，监控端口和被监控端口分别是多少，例，1号端口监控2/3/4号端口:1–&gt;2,3,4<br>18.路由器一共有几个接口?其中有几个WAN口启用?有几个LAN口启用(格式:用英文逗号分隔)<br>19.路由器的系统路由表中一共有几条?第三条的子网掩码是多少。例:255 255.255.0则为24(格式:用英文逗号分隔)<br>20.路由器的5Gwif名称是什么，信道是多少(格式:名称信道)</p>
-<h2 id="第一个数据包"><a href="#第一个数据包" class="headerlink" title="第一个数据包"></a>第一个数据包</h2><p>   首先过滤一下http<br><img src="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnSTE1ZTVQTjhaR3RVV2ZMNWh3SmFQY0FpWHBGS1p5SmFBPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图1"><br>    发现phpinfo<br>    192.168.1.99是受害者的ip<br>    202.1.1.2是攻击者的ip</p>
-<p>进一步进行过滤</p>
-<p><code>http and ip.addr==202.1.1.2 and ip.addr==192.168.1.99</code></p>
-<p><img src="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTjY2RXI3Q0NITFZUOFdtL0NhV3FEYWpTQlc5N1ZTVjFRPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图2"><br>注意关键字Powered by<br>可以找到CMS及其版本号<br>EasyTalk X2.0.1</p>
-<p>同时可以发现一个url<br>不难发现这就是webshell的地址<br><img src="http://imglf4.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTi9sc2diVkdjQTAvSFlKYXFCVVg5N2tVbXhmWFpJL09nPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图3 "><br>解码后得</p>
-<p><a href="http://202.1.1.1/index.php/module/action/param1/$%7B@print(eval($_POST[c]))%7D" target="_blank" rel="external">http://202.1.1.1/index.php/module/action/param1/$%7B@print(eval($_POST[c]))%7D</a></p>
-<p>phpinfo泄露大量的服务器信息<br>导出http对象  保存为html查看一下<br><img src="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnSmdzVWRCTXlMQkFmWWxyYkFNb0VORGhtVjArNXJYbjhRPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图4 "><br><img src="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRnBrNlQ2YmdZajcxTXVISzduT1ZQMnM3NnhGdGxlckt3PT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图5 "><br>由图可知<br>主机名为simplefight1<br>网站根目录/var/www/html/easytalk/</p>
-<p>接下来要找到黑客上传的第一个文件<br>可以这样过滤<br>http.request.method==POST and ip.addr==202.1.1.2<br><img src="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnQTJtS2ZweFJ1SFhwVXNvbGlvQUZyQml5Wm1EaklWWlJRPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图6 "></p>
-<p>解码得到<br>/var/www/html/easytalk/scan.php</p>
-<p>继续进行过滤<br>ip.addr== 202.1.1.2 &amp;&amp; http contains “scan.php”<br><img src="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnSnFVTFZhQUpZL1M2azlnbUVCaWFoUmVHcXdQTVllZTF3PT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图7 "><br>可见起始ip:192.168.0.1<br>结束ip:192.168.3.255<br>扫描端口:21,80,8080,1433,3306</p>
-<blockquote>
-<p>归纳一下答案<br>1.黑客的IP是多少<br>202.1.1.2<br>2.服务器1.99的web服务器使用的CMS及其版本号(请直接复制)<br> EasyTalkX2.0.1<br>3.服务器拿到的webshell的网址(请输入url解码后的网址)<br><a href="http://202.1.1.1/index.php/module/action/param1/${@print(eval($_POST[c]))}" target="_blank" rel="external">http://202.1.1.1/index.php/module/action/param1/${@print(eval($_POST[c]))}</a><br>4.服务器1.99的主机名<br> simplefight1<br>5.网站根目录的绝对路径(注意最后加斜杠)<br> /var/www/html/easytalk<br>6.黑客上传的第一个文件名称是什么<br> scan.php<br>7.黑客进行内网扫描，扫描的端口都有哪些(端口从小到大，用英文逗号分隔)<br> 21,80,8080,1433,3306</p>
-</blockquote>
-<h2 id="第二个数据包"><a href="#第二个数据包" class="headerlink" title="第二个数据包"></a>第二个数据包</h2><p>  既然要找ftp的账号密码，肯定是利用之前打下的机子作为跳板，进一步攻击内网</p>
-<p>  那么此时我们只需要过滤</p>
-<p>  ip.src== 192.168.1.99 &amp;&amp; ftp</p>
-<p>  即可查看所有登录信息</p>
-<p><img src="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnTE9LNE1JVC9hV2FsSU1FNExMelFWelJNNXpTWEtZSHF3PT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图8 "></p>
-<p>不难看出黑客是在爆破密码</p>
-<p>所以最后一次爆破 应该就是账户的密码</p>
-<p>账户密码为:administrator:123456</p>
-<p>找到对应密码为123456登录的消息</p>
-<p><img src="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnUGgxVk5KOVhGWlYwaklpcVRZTE4va3VKeU90cENRa3lBPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图9 "></p>
-<p>可以看到登录时间</p>
-<p>14:07:15</p>
-<p>可以发现黑客在第二个数据包里只进行了操作</p>
-<p>CWD改变工作目录<br>PWD打印工作目录，返回主机的当前目录<br>PASV进入被动模式<br>LIST如果指定了文件或目录，返回其信息；否则返回当前工作目录的信息</p>
-<p>而下载命令为</p>
-<p>RETR传输文件副本</p>
-<p>所以我们切换到第三个数据包中</p>
-<h2 id="第三个数据包"><a href="#第三个数据包" class="headerlink" title="第三个数据包"></a>第三个数据包</h2><p>根据之前的命令，RETR为下载命令</p>
-<p><img src="http://imglf3.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRTlLMkcvMElVTDZ0V1BpbGQ2R1hxWkhMZjF4eVVCWEpnPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图10 "></p>
-<p>下载的文件名为</p>
-<p>/phpStudy/WWW/config/config_db.php</p>
-<p>跟进这个重要文件看一下</p>
-<p><img src="http://imglf6.nosdn.127.net/img/S0ZyYTZNbTNwamRmb0RvbHdkcGtnRURqS1RxNkRzV1ZnYXlYWWJSa01BUWJlVytqZmE0b1NBPT0.jpg?imageView&amp;thumbnail=1680x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="图11 "></p>
+        <p>pwnable.kr一道1point的题</p>
+<a id="more"></a><!--more--><!--more-->
+<!--more-->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include stdio.h</div><div class="line"> </div><div class="line">int main()&#123;</div><div class="line">	unsigned int random;</div><div class="line">	random = rand();	 random value!</div><div class="line">	printf(%u,random);</div><div class="line">	unsigned int key=0;</div><div class="line">	scanf(%d, &amp;key);</div><div class="line"> </div><div class="line">	if( (key ^ random) == 0xdeadbeef )&#123;</div><div class="line">		printf(Good!n);</div><div class="line">		system(bincat flag);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	printf(Wrong, maybe you should try 2^32 cases.n);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>分析下代码</p>
+<p>发现输入的key只要和random异或等于 0xdeadbeef</p>
+<p>那么就可以得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#includestdio.h</div><div class="line">#includestdlib.h</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	unsigned random</div><div class="line">	random = rand();</div><div class="line">	printf(%u,random);</div><div class="line">	return0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 测试每次输出的都一样，rand函数返回的都是：1804289383</p>
+<p> and()函数用来产生随机数，但是，rand()的内部实现是用线性同余法实现的，是伪随机数，由于周期较长，因此在一定范围内可以看成是随机的。</p>
+<p> rand()会返回一个范围在0到RAND_MAX（32767）之间的伪随机数（整数）。</p>
+<p> 在调用rand()函数之前，可以使用srand()函数设置随机数种子，如果没有设置随机数种子，rand()函数在调用时，自动设计随机数种子为1。随机种子相同，每次产生的随机数也会相同。</p>
+<p> rand()函数需要的头文件是：stdlib.h</p>
+<p> rand()函数原型：int rand(void);</p>
+<p> 使用rand()函数产生1-100以内的随机整数：int number1 = rand() % 100;</p>
+<p>异或是可逆的<br><img src="httpimglf4.nosdn0.126.netimgS0ZyYTZNbTNwamVlMDNYcTRDM0xCU0hBVXdXQ1M2RkozYUxtQnVOY2QrTG42eFAxM0VteGlnPT0.jpgimageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0&amp;type=jpg" alt="这里写图片描述"></p>
+<p><img src="httpimglf5.nosdn0.126.netimgS0ZyYTZNbTNwamVlMDNYcTRDM0xCZVNEOGJJTnFzUElKMm1ibnFsOUNheVJLckJ5WjlFRTVBPT0.pngimageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt="这里写图片描述"><br>输入3039230856<br><img src="httpimglf5.nosdn0.126.netimgS0ZyYTZNbTNwamVlMDNYcTRDM0xCUy82cXpaaWwreDVra0ZwMno1K2txOUwwUXdDK2ZEZVBRPT0.pngimageView&amp;thumbnail=500x0&amp;quality=96&amp;stripmeta=0" alt="这里写图片描述"><br>就可以得到flag了</p>
+<p>flag：Mommy, I thought libc random is unpredictable…</p>
 
       
       
@@ -372,13 +343,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/05/27/2018信息安全铁人三项赛/">2018.5.18 信息安全铁三赛</a></p>
+        <p><span>本文标题:</span><a href="/2018/07/02/pwnable 笔记 Toddler's Bottle - random/">pwnable 笔记 Toddler&#39;s Bottle - random</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 arbitgod 的个人博客">arbitgod</a></p>
-        <p><span>发布时间:</span>2018年05月27日 - 16时24分</p>
-        <p><span>最后更新:</span>2018年06月25日 - 09时44分</p>
+        <p><span>发布时间:</span>2018年07月02日 - 19时24分</p>
+        <p><span>最后更新:</span>2018年07月02日 - 18时25分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/05/27/2018信息安全铁人三项赛/" title="2018.5.18 信息安全铁三赛">http://yoursite.com/2018/05/27/2018信息安全铁人三项赛/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/27/2018信息安全铁人三项赛/　　作者: arbitgod" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/07/02/pwnable 笔记 Toddler's Bottle - random/" title="pwnable 笔记 Toddler&#39;s Bottle - random">http://yoursite.com/2018/07/02/pwnable 笔记 Toddler&#39;s Bottle - random/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/02/pwnable 笔记 Toddler&#39;s Bottle - random/　　作者: arbitgod" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -391,15 +362,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          pwnable 笔记 Toddler&#39;s Bottle - bof
-        
-      </div>
-    </a>
   
+    <a href="/2018/06/27/pwnable 笔记 Toddler's Bottle - passcode/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pwnable 笔记 Toddler&#39;s Bottle - passcode</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -408,7 +375,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一个数据包"><span class="toc-number">2.</span> <span class="toc-text">第一个数据包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二个数据包"><span class="toc-number">3.</span> <span class="toc-text">第二个数据包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三个数据包"><span class="toc-number">4.</span> <span class="toc-text">第三个数据包</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -474,13 +441,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/" title="上一篇: pwnable 笔记 Toddler&#39;s Bottle - bof">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/06/27/pwnable 笔记 Toddler's Bottle - passcode/" title="下一篇: pwnable 笔记 Toddler&#39;s Bottle - passcode">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/pwnable 笔记 Toddler's Bottle - random/">pwnable 笔记 Toddler's Bottle - random</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/27/pwnable 笔记 Toddler's Bottle - passcode/">pwnable 笔记 Toddler's Bottle - passcode</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/pwnable 笔记 Toddler's Bottle - bof/">pwnable 笔记 Toddler's Bottle - bof</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/27/2018信息安全铁人三项赛/">2018.5.18 信息安全铁三赛</a></li></ul>
